@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="panel panel-primary">
+   <div class="panel-heading">日志统计汇总</div>
+      <div class="panel-body">
+         <p>这里统计展示所有的日志，包括nginx ,tornado,tomcat,等业务日志
+         </p>
+<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+新加
+</button>
+   </div>
+<table class="table table-bordered table-hover table-condensed" id="tab_span">
+   <caption>日志统计</caption>
+   <thead>
+      <tr>
+         <th>日志名称</th>
+         <th>日志主机</th>
+         <th>日志路劲</th>
+         <th>日志用途</th>
+         <th>日志指标</th>
+         <th>日志切割</th>
+         <th>日志备份</th>
+         <th>日志操作</th>
+      </tr>
+   </thead>
+   <tbody>
+     {% for index,items in enumerate(Log_INFO_html)%}
+      <tr>
+	<td>{{(items["name"]).encode("utf-8")}}</td>
+	<td>{{(items["host"]).encode("utf-8")}}</td>
+	<td>{{(items["path"]).encode("utf-8")}}</td>
+	<td>{{(items["action"]).encode("utf-8")}}</td>
+	<td>{{(items["key_args"]).encode("utf-8")}}</td>
+	<td>{{(items["logrotate"]).encode("utf-8")}}</td>
+	<td>{{(items["backup_info"]).encode("utf-8")}}</td>
+      <td>
+        <span class="glyphicon glyphicon-plus"  style="color: rgb(255, 103, 60);" data-toggle="modal" data-target="#myModal"></span>
+        <span class="glyphicon glyphicon-minus" style="color: rgb(255, 103, 60);" id="del_button">
+        {{(items["id"])}}</span>
+        </td>
+      </tr>
+     {% end %}
+   </tbody>
+</table>
+
+</div>
+
+
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div   class="modal-dialog" style="width:400px">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              日志操作
+            </h4>
+         </div>
+         <div class="modal-body">
+<form class="form-inline">
+ <table class="table table-bordered">
+   <tbody>
+    <tr>
+      <td>
+         <div class="form-group has-success has-feedback">
+            <label class="control-label">日志名称</label>
+         </div>
+      </td>
+      <td>  
+         <input type="text" class="form-control" id="Log_Name" > 
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+         <div class="form-group has-success has-feedback">
+            <label class="control-label">日志主机</label>
+         </div>
+      </td>
+      <td>
+         <input type="text" class="form-control" id="Log_Host" >
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+         <div class="form-group has-success has-feedback">
+            <label class="control-label">日志路劲</label>
+         </div>
+      </td>
+      <td>
+         <input type="text" class="form-control" id="Log_Path" >
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+         <div class="form-group has-success has-feedback">
+            <label class="control-label">日志用途</label>
+         </div>
+      </td>
+      <td>
+         <input type="text" class="form-control" id="Log_Purpose" >
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+         <div class="form-group has-success has-feedback">
+            <label class="control-label">日志指标</label>
+         </div>
+      </td>
+      <td>
+         <input type="text" class="form-control" id="Log_Key">
+      </td>
+    </tr>
+    <tr>
+      <td>
+         <div class="form-group has-success has-feedback">
+            <label class="control-label">日志切割</label>
+         </div>
+      </td>
+      <td>
+         <input type="text" class="form-control" id="Log_roate">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+         <div class="form-group has-success has-feedback">
+            <label class="control-label">日志备份</label>
+         </div>
+      </td>
+      <td>
+         <input type="text" class="form-control" id="Log_Backup" >
+      </td>
+    </tr>
+
+
+  </tbody>
+ </table>
+</form>
+
+         </div>
+         <div class="modal-footer">
+	    <input id="setting_btn2" type="button" class="btn btn-success" value="提交">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
+
+
+{% end %}

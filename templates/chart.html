@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+   <div class="row">
+      <h3><div class="col-md-2 text-center label label-primary">USER MEMORY<h1>22.32G</h1>	</div></h3>
+      <h3><div class="col-md-2 text-center label label-success">TOTAL KEYS	</div></h3>
+      <h3><div class="col-md-2 text-center label label-info">CLIENTS		</div></h3>
+      <h3><div class="col-md-2 text-center label label-info">COMMANDS PROCESSED	</div></h3>
+      <h3><div class="col-md-2 text-center label label-success">UPTIME		</div></h3>
+      <h3><div class="col-md-2 text-center label label-primary">ROLE		</div></h3>
+   </div>
+</div>
+<div class="container">
+   <script src="/static/js/gray.js"></script>
+   <script src="/static/js/chart.js"></script>
+<h1>Memory  Consumption</h1>
+   <div id="container_1" style="min-width:700px;height:400px"></div>
+<h1>Comand Processed</h1>
+   <div id="container" style="min-width:700px;height:400px"></div>
+</div>
+
+
+{% end %}
