@@ -23,11 +23,10 @@ $(document).ready(function(){
 ///////////////////////////////////////////////////////////////
 //
   $("#tab_span td span:last-child").click(function(){
-	//alert($(this).text());
-	var $log_id = $(this).text();
-	alert($log_id);
-	del($log_id);
-            });
+	var  $log_id = $(this).text();
+	     del($log_id);
+             
+          });
 
 	function del($log_id){
                 var msg = "确定要删除吗?";
