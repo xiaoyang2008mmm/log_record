@@ -43,4 +43,4 @@ class Clear_LogHandler(BaseHandler):
         sql = "DELETE FROM log_info where id='%s'"%(log_id)
         self.db.execute(sql)
         exec_time=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-	print "At %sclient ip :%s delete a log in mysql db  ,Please notice itt!"%(exec_time,self.request.remote_ip)
+	print "At %sclient ip :%s delete a log in mysql db  ,Please notice it!"%(exec_time,self.request.remote_ip)
