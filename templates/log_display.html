@@ -24,7 +24,7 @@
          <th>操作</th>
       </tr>
    </thead>
-   <tbody>
+   <tbody id="tbody_span">
      {% for index,items in enumerate(Log_INFO_html)%}
       <tr style="font-size:50%">
 	<td>{{(items["name"]).encode("utf-8")}}</td>

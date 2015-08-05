@@ -44,7 +44,11 @@ $(document).ready(function(){
                      }
 
 		}
+/////////////////////////////////////
+  $("#tbody_span td").click(function(){
+	alert($(this).text());
 
+	});
 
 
 
