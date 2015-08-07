@@ -44,3 +44,15 @@ class Clear_LogHandler(BaseHandler):
         self.db.execute(sql)
         exec_time=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
 	print "At %sclient ip :%s delete a log in mysql db  ,Please notice it!"%(exec_time,self.request.remote_ip)
+
+
+
+class Change_LogHandler(BaseHandler):
+ 
+    def post(self):
+        id = self.get_argument("id")
+	sql = "SELECT *  FROM log_info where id='%s'"%(id)
+	#data = unicode(self.db.query(sql), "utf-8")
+	data = self.db.query(sql)
+	print data
+        self.write(data[0])

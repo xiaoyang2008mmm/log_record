@@ -45,10 +45,18 @@ $(document).ready(function(){
 
 		}
 /////////////////////////////////////
-  $("#tbody_span td").click(function(){
+// 
+  $("#tab_span td span:first").click(function(){
 	alert($(this).text());
-
-	});
+	$.post("/change_log/",
+                {
+                        id:$(this).text(),
+		},
+			function(data){
+     				alert(decodeURI(data));
+                     });
+	
+	 });
 
 
 
