@@ -44,7 +44,26 @@ $(document).ready(function(){
                      }
 
 		}
+/////////////////////////////////////
+// 
+  $("#tab_span td span:first-child").click(function(){
+	alert($(this).text());
+	$.post("/change_log/",
+                {
+                        id:$(this).text(),
+		},
+			function(data){
+     				//alert(decodeURI(data));
+     				alert(data);
 
+
+			$.each(data,function(i, n){ 
+				console.info("Name: " + i + ", Value: " + n); 
+				});
+
+                     });
+	
+	 });
 
 
 
