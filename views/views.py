@@ -40,7 +40,7 @@ class Add_NewlogHandler(BaseHandler):
 	except:
 	    pass 
 	if  log_id:
-	    update_sql = ("update log_info set  name = '%s' where id = '%d'")%(name,(log_id[0])["id"])
+	    update_sql = ("update log_info set  name = '%s' ,host='%s',path='%s',action='%s',key_args='%s',logrotate='%s',backup_info='%s' where id = '%d'")%(name,host,path,action,key_args,logrotate,backup_info,(log_id[0])["id"])
 	    self.db.update(update_sql)
 	    self.write("update")
 	else:
