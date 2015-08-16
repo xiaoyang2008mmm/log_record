@@ -34,9 +34,21 @@ class Add_NewlogHandler(BaseHandler):
         backup_info  	= self.get_argument("Log_Backup")
         last_time=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
         sql = "INSERT INTO log_info(name,host,path,action,key_args,logrotate,backup_info) VALUES ('%s','%s','%s','%s','%s','%s','%s')" %(name,host,path,action,key_args,logrotate,backup_info)
-	print "At %sclient ip :%s add a new log to mysql db ,Please checkout it!"%(last_time,self.request.remote_ip)
-        self.db.execute(sql)
-
+	sql_log_action = "delete  FROM log_info where action ='%s'"%(action)
+	try:
+	    try:
+		print sql_log_action
+	        print self.db.query(sql_log_action)
+	    except: 
+	    	print "插入重复的日志用途数据11"
+           	self.write("")
+	    finally:
+           	self.db.execute(sql)
+		print "At %sclient ip :%s add a new log to mysql db ,Please checkout it!"%(last_time,self.request.remote_ip)
+            	self.write("插入成功")
+	except:
+	    print "插入重复的日志用途数据"
+            self.write("")
 class Clear_LogHandler(BaseHandler):                                                                                         
     def post(self):                                                                                                 
         log_id = self.get_argument("log_id") 
@@ -54,5 +66,4 @@ class Change_LogHandler(BaseHandler):
 	sql = "SELECT *  FROM log_info where id='%s'"%(id)
 	#data = unicode(self.db.query(sql), "utf-8")
 	data = self.db.query(sql)
-	print data
         self.write(data[0])

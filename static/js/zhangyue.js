@@ -13,8 +13,11 @@ $(document).ready(function(){
                         Log_roate:  	$("#Log_roate").val(),
                         Log_Backup:   	$("#Log_Backup").val(),
                 },
-                        function(status){
-                                alert("保存成功");
+                        function(data){
+				if( data == "") {
+                                	alert("日志用途重复");
+              			} else{ 
+					alert("保存成功");}
                 });
                                 location.href='/log_display/';
         };
@@ -45,9 +48,8 @@ $(document).ready(function(){
 
 		}
 /////////////////////////////////////
-// 
   $("#tab_span td span:first-child").click(function(){
-	alert($(this).text());
+	//alert($(this).text());
 	$.post("/change_log/",
                 {
                         id:$(this).text(),
