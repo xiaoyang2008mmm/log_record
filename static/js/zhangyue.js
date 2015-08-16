@@ -54,11 +54,33 @@ $(document).ready(function(){
 		},
 			function(data){
      				//alert(decodeURI(data));
-     				alert(data);
+     				//alert(data);
+				$('#myModal').modal('show');
 
-
-			$.each(data,function(i, n){ 
-				console.info("Name: " + i + ", Value: " + n); 
+			$.each(data,function(key, value){ 
+				//调试打印console.log,需要Firebug
+				console.info("Name:" + key + ",Value:" + value); 
+				    if( key == "name") {   
+					$("#Log_Name").val(value);
+      					}
+				    if( key == "key_args") {   
+					$("#Log_Key").val(value);
+      					}
+				    if( key == "logrotate") {   
+					$("#Log_roate").val(value);
+      					}
+				    if( key == "host") {   
+					$("#Log_Host").val(value);
+      					}
+				    if( key == "backup_info") {   
+					$("#Log_Backup").val(value);
+      					}
+				    if( key == "action") {   
+					$("#Log_Purpose").val(value);
+      					}
+				    if( key == "path") {   
+					$("#Log_Path").val(value);
+      					}
 				});
 
                      });
