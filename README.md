@@ -3,4 +3,4 @@
 
 这款日志记录系统集添加。修改。删除。功能目前的需求都开发完毕了，放在网上开源，共享给大家！！！
 
-![image](https://github.com/xiaoyang2008mmm/log_record/static/image/jiemian.png)
+![image](https://github.com/xiaoyang2008mmm/log_record/blob/master/static/image/jiemian.png)
