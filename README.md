@@ -12,3 +12,8 @@
 3.jQuery的ajax  
 4.MySQL数据库    
 5.全局数据库以MySQL表中的actio字段为唯一索引，禁止插入重复的数据   
+
+###启动服务
+```javascript
+  python server.py 
+```
