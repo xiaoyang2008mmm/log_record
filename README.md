@@ -6,7 +6,7 @@
 ![image](https://raw.githubusercontent.com/xiaoyang2008mmm/log_record/master/static/image/jiemian.png)
 
 
-<h1>用到的开发软件</h1>：  
+<h1>用到的开发软件</h1>  
 1.Python的tornado  
 2.html的bootstrap  
 3.jQuery的ajax  
