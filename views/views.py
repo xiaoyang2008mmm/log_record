@@ -40,15 +40,15 @@ class Add_NewlogHandler(BaseHandler):
 		print sql_log_action
 	        print self.db.query(sql_log_action)
 	    except: 
-	    	print "插入重复的日志用途数据11"
-           	self.write("")
+	    	print "插入重复的日志用途数据"
+           	self.write("")		#返回ajax空数据以此做判断
 	    finally:
            	self.db.execute(sql)
 		print "At %sclient ip :%s add a new log to mysql db ,Please checkout it!"%(last_time,self.request.remote_ip)
             	self.write("插入成功")
 	except:
 	    print "插入重复的日志用途数据"
-            self.write("")
+            self.write("")		##返回ajax空数据以此做判断
 class Clear_LogHandler(BaseHandler):                                                                                         
     def post(self):                                                                                                 
         log_id = self.get_argument("log_id") 
