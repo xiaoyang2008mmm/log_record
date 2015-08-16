@@ -32,23 +32,25 @@ class Add_NewlogHandler(BaseHandler):
         key_args	= self.get_argument("Log_Key")
         logrotate	= self.get_argument("Log_roate")
         backup_info  	= self.get_argument("Log_Backup")
-        last_time=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+        last_time = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
         sql = "INSERT INTO log_info(name,host,path,action,key_args,logrotate,backup_info) VALUES ('%s','%s','%s','%s','%s','%s','%s')" %(name,host,path,action,key_args,logrotate,backup_info)
-	sql_log_action = "delete  FROM log_info where action ='%s'"%(action)
+	sql_log_id = ("select id  FROM log_info where action = '%s'")%(action)
 	try:
-	    try:
-		print sql_log_action
-	        print self.db.query(sql_log_action)
-	    except: 
-	    	print "插入重复的日志用途数据"
-           	self.write("")		#返回ajax空数据以此做判断
-	    finally:
-           	self.db.execute(sql)
-		print "At %sclient ip :%s add a new log to mysql db ,Please checkout it!"%(last_time,self.request.remote_ip)
-            	self.write("插入成功")
+	    log_id = self.db.query(sql_log_id)
 	except:
-	    print "插入重复的日志用途数据"
-            self.write("")		##返回ajax空数据以此做判断
+	    pass 
+	if  log_id:
+	    update_sql = ("update log_info set  name = '%s' where id = '%d'")%(name,(log_id[0])["id"])
+	    self.db.update(update_sql)
+	    self.write("update")
+	else:
+	    try:
+            	self.db.execute(sql)
+	    	print "At %sclient ip :%s add a new log to mysql db ,Please checkout it!"%(last_time,self.request.remote_ip)
+            	self.write("新增成功")
+	    except:
+	    	print "插入重复的日志用途数据"
+            	self.write("")		##返回ajax空数据以此做判断
 class Clear_LogHandler(BaseHandler):                                                                                         
     def post(self):                                                                                                 
         log_id = self.get_argument("log_id") 

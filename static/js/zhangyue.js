@@ -16,7 +16,9 @@ $(document).ready(function(){
                         function(data){
 				if( data == "") {
                                 	alert("日志用途重复");
-              			} else{ 
+              			} else if( data == "update"){
+					alert("日志更新成功");
+				} else{ 
 					alert("保存成功");}
                 });
                                 location.href='/log_display/';
